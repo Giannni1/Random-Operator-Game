@@ -1,12 +1,37 @@
-$(document).ready(function() {
-    let randomOp = Math.floor((Math.random() * 4) + 1);
-    
-    $("#randomNumberBtn").click( () => {
-        let Textval1 = $("#randomNumbertext1").val();
-        let Textval2 = $("#randomNumbertext2").val();
-        console.log(Textval1);
-        console.log(Textval2);
-        
+$(document).ready(function () {
+    $(document).on("change", "#SetTimeSpeed", () => {
+        var NewSpeed = parseInt($("#SetTimeSpeed option:selected").val());
+        console.log(NewSpeed)
+
+        switch (NewSpeed) {
+            case (NewSpeed = 1):
+                var timeSpeed = 50;
+                break;
+            case (NewSpeed = 2):
+                var timeSpeed = 100;
+                break;
+            case (NewSpeed = 3):
+                var timeSpeed = 300;
+                break;
+            case (NewSpeed = 4):
+                var timeSpeed = 500;
+                break;
+        }
+
+        $("#changeSpeed").click(() => {
+            console.log(timeSpeed);
+        })
+        window.NewSpeede = timeSpeed;
+    })
+
+
+    $("#randomNumberBtn").click(() => {
+        let Textval1 = parseInt($("#randomNumbertext1").val());
+        let Textval2 = parseInt($("#randomNumbertext2").val());
+        let randomOp = Math.floor((Math.random() * 4) + 1);
+
+        console.log(NewSpeede);
+
         switch (randomOp) {
             case (randomOp = 1):
                 // This case will be multiply
@@ -23,47 +48,65 @@ $(document).ready(function() {
                 var finalNumber = Textval1 - Textval2;
                 var answer = "Subtraction";
                 break;
-            case (randomOp = 4): 
+            case (randomOp = 4):
                 // This case will be addition 
-                var finalNumber = Textval1 * Textval2;
+                var finalNumber = Textval1 + Textval2;
                 var answer = "Addition"
-                break;    
+                break;
         }
 
         $("#answerNumber").html(finalNumber);
 
-        setTimeout(() => { 
-            $(".hover_bkgr_fricc").show(); 
-            // $("#answerNumber").html("Nice Try");
+        setTimeout(() => {
+            $(".hover_bkgr_fricc").show();
+            $("#answerNumber").html("Nice Try");
             $("#randomNumbertext1").val("");
             $("#randomNumbertext2").val("");
-            
-        }, 500);
-        
-        $('.popupCloseButton').click(function(){
+
+        }, NewSpeede);
+         
+        $('.popupCloseButton').click(function () {
             $('.hover_bkgr_fricc').hide();
         });
-    
-        $("#SubmitButtonAnswer").click(() => {    
+
+        $("#SubmitButtonAnswer").click(() => {
             var OpitionSelected = $("#OprationSelect option:selected").val();
             console.log(OpitionSelected);
             console.log(answer);
-            
-            switch (OpitionSelected) {
-                case (OpitionSelected === "Division" & answer === "Division"):
-                    console.log("You got it right");
-                    break;
-                case (OpitionSelected === "Addition" & answer === "Addition"):
-                    console.log("You got it right");
-                    break;
-                case (OpitionSelected === "Subtraction" & answer === "Subtraction"):
-                    console.log("You got it right");
-                    break;
-                case (OpitionSelected === "Multiplication" & answer === "Multiplication"):
-                    console.log("You got it right");
-                    break;
 
+            if (OpitionSelected === "Division" & answer === "Division") {
+
+                console.log("You got it right");
+                $("#PopUpDisplay").css("background", "#00B140");
+
+            } else if (OpitionSelected === "Addition" & answer === "Addition") {
+
+                console.log("You got it right");
+                $("#PopUpDisplay").css("background", "#00B140");
+            } else if (OpitionSelected === "Subtraction" & answer === "Subtraction") {
+
+                console.log("You got it right");
+                $("#PopUpDisplay").css("background", "#00B140");
+            } else if (OpitionSelected === "Multiplication" & answer === "Multiplication") {
+
+                console.log("You got it right");
+                $("#PopUpDisplay").css("background", "#00B140");
+            } else {
+
+                console.log("You got it wrong");
+                $("#PopUpDisplay").css("background", "#ff0000");
             }
+
+            $("#retryGame").css("display", "block");
+            $("#retryGame").click(() => {
+                location.reload();
+            })
+            
+
+
+
+
+
         })
     })
 })
