@@ -2,49 +2,50 @@
 <html>
 <head>
     <title>Pop Up Practice</title>
-    <link rel="stylesheet" href="PopUp.css">
+    <link rel="stylesheet" href="PopUp.css" />
     <script src="https://kit.fontawesome.com/88e8f30f3e.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="PopUp.js"></script>
+
 </head>
-    <body>
-        <p class="NumberAnswer">The Answer is: <span id="answerNumber"></span></p>
-
+<body>
+    <p class="NumberAnswer">The Answer is: <span id="answerNumber"></span></p>
+    <div class="container">
         <!-- Here is where they put their 1 number -->
-        <input type="text" name="randomNumbertext1" id="randomNumbertext1" placeholder="Enter the first Number" >
-        <br>
+        <input type="text" name="randomNumbertext1" id="randomNumbertext1" placeholder="Enter the first Number">
+
         <!-- Here is where they put their 2 number -->
-        <input type="text" name="randomNumbertext2" id="randomNumbertext2" placeholder="Enter the Second Number" >
+        <input type="text" name="randomNumbertext2" id="randomNumbertext2" placeholder="Enter the Second Number">
         <br>
 
-        <input type="submit" name="randomNumberBtn" id="randomNumberBtn" value="Get Your Random Opration" >
+        <input type="submit" name="randomNumberBtn" id="randomNumberBtn" value="Get Your Random Opration">
         <form action="#">
             <select id="SetTimeSpeed">
-                <option value="1">50ms 'Expert'</option>
-                <option value="2">100ms 'Good'</option>
-                <option value="3">300ms 'Better'</option>
-                <option value="4">500ms 'Learner'</option>
+                <option class="selection" value="1">50ms 'Expert'</option>
+                <option class="selection" value="2">100ms 'Good'</option>
+                <option class="selection" value="3">300ms 'Better'</option>
+                <option class="selection" value="4">500ms 'Learner'</option>
             </select>
             <input type="button" name="changeSpeed" id="changeSpeed" value="Update Speed Value" />
         </form>
-
-        <div class="hover_bkgr_fricc">
-            <span class="helper"></span>
-            <div id="PopUpDisplay">
-                <div class="popupCloseButton" >&times;</div>
-                    <h1> Enter What you think it was: </h1>
-                    <form action="#">
-                        <select id="OprationSelect">
-                            <option value="Division">Division</option>
-                            <option value="Addition">Addition</option>
-                            <option value="Subtraction">Subtraction</option>
-                            <option value="Multiplication">Multiplication</option>
-                        </select>
-                        <input type="button" id="SubmitButtonAnswer" value="Enter Your Guss" />
-                    </form>
-                <input type="submit" name="retry" id="retryGame" value="Agian?"/>
-            </div>
+    </div>
+    <div class="hover_bkgr_fricc">
+        <span class="helper"></span>
+        <div id="PopUpDisplay">
+            <div class="popupCloseButton">&times;</div>
+            <h1> Enter What you think it was: </h1>
+            <form action="#">
+                <select id="OprationSelect">
+                    <option value="Division">Division</option>
+                    <option value="Addition">Addition</option>
+                    <option value="Subtraction">Subtraction</option>
+                    <option value="Multiplication">Multiplication</option>
+                </select>
+                <input type="button" id="SubmitButtonAnswer" value="Enter Your Guss" />
+            </form>
+            <input type="submit" name="retry" id="retryGame" value="Agian?" />
         </div>
+    </div>
 
-    </body>
+</body>
 </html>

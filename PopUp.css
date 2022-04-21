@@ -4,11 +4,42 @@ body {
 
 #randomNumbertext2 {
     display: block;
+    margin-top: 10px;
+    width: 250px;
 }
+
+#randomNumbertext1 {
+    width: 250px;
+}
+
 
 .NumberAnswer {
     text-align: center;
     font-size: large;
+}
+
+#randomNumberBtn {
+    width: 259px;
+    height: 20px;
+    border: 1px solid black;
+    transition-duration: 0.5s;
+}
+
+    #randomNumberBtn:hover {
+        background-color: grey;
+    }
+
+#changeSpeed {
+    border: 1px solid black;
+    transition-duration: 0.5s;
+}
+
+    #changeSpeed:hover {
+        background: grey;
+    }
+
+.selection {
+    background: white;
 }
 
 /* Popup box BEGIN */
@@ -79,3 +110,4 @@ body {
 #retryGame {
     display: none;
 }
+

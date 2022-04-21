@@ -1,9 +1,15 @@
 $(document).ready(function () {
     $(document).on("change", "#SetTimeSpeed", () => {
-        var NewSpeed = parseInt($("#SetTimeSpeed option:selected").val());
-        console.log(NewSpeed)
 
+        // Get the vals of all the options from the change speed selection
+        var NewSpeed = parseInt($("#SetTimeSpeed option:selected").val());
+        var timeSpeed;
+
+        // Go threw all of them and see which one is selected for the speed
         switch (NewSpeed) {
+            default:
+                var timeSpeed = 50;
+                break;
             case (NewSpeed = 1):
                 var timeSpeed = 50;
                 break;
@@ -15,23 +21,22 @@ $(document).ready(function () {
                 break;
             case (NewSpeed = 4):
                 var timeSpeed = 500;
-                break;
+                return timeSpeed;
         }
 
-        $("#changeSpeed").click(() => {
-            console.log(timeSpeed);
-        })
-        window.NewSpeede = timeSpeed;
-    })
+        console.log(timeSpeed)
 
+        // Makeing the timeSpeed variable globle to the entire page, not local 
+        window.NewSpeede = timeSpeed;
+    });
 
     $("#randomNumberBtn").click(() => {
+        // Get the values of the two textboxs and also genrate the random number 
         let Textval1 = parseInt($("#randomNumbertext1").val());
         let Textval2 = parseInt($("#randomNumbertext2").val());
         let randomOp = Math.floor((Math.random() * 4) + 1);
 
-        console.log(NewSpeede);
-
+        // Look throw the random genrated number and assign an operation to it 
         switch (randomOp) {
             case (randomOp = 1):
                 // This case will be multiply
@@ -55,8 +60,10 @@ $(document).ready(function () {
                 break;
         }
 
+        // Show the answer for the two numbers at the top of the page
         $("#answerNumber").html(finalNumber);
 
+        // Make it where based on the Time the person choice it effect is here. Everhting bellow will excute depending on the chosen speed
         setTimeout(() => {
             $(".hover_bkgr_fricc").show();
             $("#answerNumber").html("Nice Try");
@@ -64,16 +71,14 @@ $(document).ready(function () {
             $("#randomNumbertext2").val("");
 
         }, NewSpeede);
-         
-        $('.popupCloseButton').click(function () {
-            $('.hover_bkgr_fricc').hide();
-        });
 
+        // This is where the person has to guss what they thought the operation was 
         $("#SubmitButtonAnswer").click(() => {
-            var OpitionSelected = $("#OprationSelect option:selected").val();
-            console.log(OpitionSelected);
-            console.log(answer);
 
+            // Get all the values of the operationSelect dropdown list and find the one that is seleted
+            var OpitionSelected = $("#OprationSelect option:selected").val();
+
+            // Going threw all the possiabilty, if one is a match it will turn the background of the popUp green and if wrong background will be red 
             if (OpitionSelected === "Division" & answer === "Division") {
 
                 console.log("You got it right");
@@ -81,7 +86,6 @@ $(document).ready(function () {
 
             } else if (OpitionSelected === "Addition" & answer === "Addition") {
 
-                console.log("You got it right");
                 $("#PopUpDisplay").css("background", "#00B140");
             } else if (OpitionSelected === "Subtraction" & answer === "Subtraction") {
 
@@ -97,16 +101,11 @@ $(document).ready(function () {
                 $("#PopUpDisplay").css("background", "#ff0000");
             }
 
+            // The button for them thats going to reset it 
             $("#retryGame").css("display", "block");
             $("#retryGame").click(() => {
                 location.reload();
             })
-            
-
-
-
-
-
         })
     })
 })
