@@ -1,34 +1,10 @@
 $(document).ready(function () {
-    $(document).on("change", "#SetTimeSpeed", () => {
+    let NewSpeed = parseInt($("#SetTimeSpeed option:selected").val());
 
-        // Get the vals of all the options from the change speed selection
-        var NewSpeed = parseInt($("#SetTimeSpeed option:selected").val());
-        var timeSpeed;
-
-        // Go threw all of them and see which one is selected for the speed
-        switch (NewSpeed) {
-            default:
-                var timeSpeed = 50;
-                break;
-            case (NewSpeed = 1):
-                var timeSpeed = 50;
-                break;
-            case (NewSpeed = 2):
-                var timeSpeed = 100;
-                break;
-            case (NewSpeed = 3):
-                var timeSpeed = 300;
-                break;
-            case (NewSpeed = 4):
-                var timeSpeed = 500;
-                return timeSpeed;
-        }
-
-        console.log(timeSpeed)
-
-        // Makeing the timeSpeed variable globle to the entire page, not local 
-        window.NewSpeede = timeSpeed;
-    });
+    $(window).on('change', () => {
+        var NewSpeede = SetSpeedStandars(NewSpeed);
+        var NewSpeede = 50;
+    })
 
     $("#randomNumberBtn").click(() => {
         // Get the values of the two textboxs and also genrate the random number 
@@ -109,3 +85,27 @@ $(document).ready(function () {
         })
     })
 })
+
+function SetSpeedStandars(NewSpeed) {
+    var timeSpeed;
+
+    if (SetTimeSpeed) {
+        if (NewSpeed === 2) {
+             timeSpeed = 100;
+            console.log("100 has been selected");
+        } else if (NewSpeed === 3) {
+             timeSpeed = 300;
+            console.log("300 has been selected");
+        } else if (NewSpeed === 4) {
+             timeSpeed = 500;
+            console.log("500 has been selected");
+        }
+
+    } else {
+        let timeSpeed = 50;
+        console.log("None has been selected and default is 50");
+    }
+
+    window.NewSpeede = timeSpeed;
+    
+}
